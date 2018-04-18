@@ -1,0 +1,24 @@
+{
+  "name": "smsaero-api",
+  "version": "1.0.0",
+  "description": "Node.JS library for working with smsaero.ru API",
+  "main": "index.js",
+  "scripts": {
+    "test": ""
+  },
+  "keywords": ["sms", "API"],
+  "author": "Alexander Sharabarov <alcovegan@gmail.com>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/alcovegan/smsaero.git"
+  },
+  "bugs": {
+    "url": "https://github.com/alcovegan/smsaero/issues"
+  },
+  "homepage": "https://github.com/alcovegan/smsaero#readme",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^0.18.0",
+    "query-string": "^6.0.0"
+  }
+}
