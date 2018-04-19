@@ -1,6 +1,36 @@
 # SMSAero API Node.js
 Класс для работы с API [smsaero.ru](https://smsaero.ru/) в Node.js. Поддерживаются все методы [API v2](https://smsaero.ru/description/api/).
 
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+
+
+- [Установка](#%D1%83%D1%81%D1%82%D0%B0%D0%BD%D0%BE%D0%B2%D0%BA%D0%B0)
+- [Использование](#%D0%B8%D1%81%D0%BF%D0%BE%D0%BB%D1%8C%D0%B7%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5)
+- [API](#api)
+  - [send({ number, numbers, [sign, text, channel, dateSend, callbackUrl] })](#send-number-numbers-sign-text-channel-datesend-callbackurl-)
+  - [checkStatus(id)](#checkstatusid)
+  - [sendedList({ number, text, page })](#sendedlist-number-text-page-)
+  - [balance()](#balance)
+  - [tariffs()](#tariffs)
+  - [addSign(name)](#addsignname)
+  - [signList([page])](#signlistpage)
+  - [addGroup(name)](#addgroupname)
+  - [deleteGroup(id)](#deletegroupid)
+  - [groupList([page])](#grouplistpage)
+  - [addContact({ number, [groupId, birthday, sex, lname, fname, sname, param1, param2, param3] })](#addcontact-number-groupid-birthday-sex-lname-fname-sname-param1-param2-param3-)
+  - [deleteContact(id)](#deletecontactid)
+  - [contactList({ [number, groupId, birthday, sex, operator, lname, fname, sname] })](#contactlist-number-groupid-birthday-sex-operator-lname-fname-sname-)
+  - [addBlacklist(number)](#addblacklistnumber)
+  - [blacklistList([number, page])](#blacklistlistnumber-page)
+  - [hlrCheck(number)](#hlrchecknumber)
+  - [hlrStatus(id)](#hlrstatusid)
+  - [checkOperator(number)](#checkoperatornumber)
+  - [sendViber({ number, numbers, groupId, sign, channel, text, [imageSource, textButton, linkButton, dateSend, signSms, channelSms, textSms, priceSms] })](#sendviber-number-numbers-groupid-sign-channel-text-imagesource-textbutton-linkbutton-datesend-signsms-channelsms-textsms-pricesms-)
+  - [checkViberStat(id)](#checkviberstatid)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 ## Установка
 ```bash
 npm install --save smsaero-nodejs
@@ -23,7 +53,8 @@ sendSMS.send(...); // отправить sms
 Принимаемые методами параметры почти везде совпадают с [документацией](https://smsaero.ru/description/api/), поэтому за детальным разъяснением какой метод за что отвечает - обращайтесь к ней.
 
 ### send({ number, numbers, [sign, text, channel, dateSend, callbackUrl] })
-Отправить SMS.
+
+Отправка SMS.
 
 ```js
 sendSMS.send({ number: '79290000000', sign: 'lol!', text: 'text', channel: 'SERVICE', dateSend: 1524125567, callbackUrl: 'http://goo.gl' })
@@ -37,32 +68,32 @@ sendSMS.send({ numbers: ['79290000000', '79290000000', '79290000000'], sign: 'lo
 Обязательными являются один из параметров: `number` или `numbers`.
 
 #### number
-Тип: `string`
+Тип: `string`<br>
 Обязательно: `да`
 
 #### numbers
-Тип: `array`
+Тип: `array`<br>
 Обязательно: `да`
 
 #### sign
-Тип: `string`
+Тип: `string`<br>
 Обязательно: `нет`
 
 #### text
-Тип: `string`
+Тип: `string`<br>
 Обязательно: `нет`
 
 #### channel
-Тип: `string`
+Тип: `string`<br>
 Обязательно: `нет`
 
 #### dateSend
-Тип: `number`
-Обязательно: `нет`
+Тип: `number`<br>
+Обязательно: `нет`<br>
 Формат: `unixtime`
 
 #### callbackUrl
-Тип: `string`
+Тип: `string`<br>
 Обязательно: `нет`
 
 ### checkStatus(id)
@@ -76,7 +107,7 @@ sendSMS.checkStatus(44180961)
 #### Параметры
 
 #### id
-Тип: `number`
+Тип: `number`<br>
 Обязательно: `да`
 
 
@@ -91,15 +122,15 @@ sendSMS.sendedList({number: '79290000000', text: 'text to filter sms', page: 2})
 #### Параметры
 
 #### number
-Тип: `string`
+Тип: `string`<br>
 Обязательно: `нет`
 
 #### text
-Тип: `string`
+Тип: `string`<br>
 Обязательно: `нет`
 
 #### page
-Тип: `number`
+Тип: `number`<br>
 Обязательно: `нет`
 
 ### balance()
@@ -127,7 +158,7 @@ sendSMS.addSign("DELIVERY")
 ```
 
 #### name
-Тип: `string`
+Тип: `string`<br>
 Обязательно: `да`
 
 ### signList([page])
@@ -151,7 +182,7 @@ sendSMS.addGroup("DELIVERY")
 #### Параметры
 
 #### name
-Тип: `string`
+Тип: `string`<br>
 Обязательно: `да`
 
 ### deleteGroup(id)
@@ -165,7 +196,7 @@ sendSMS.deleteGroup(1)
 #### Параметры
 
 #### id
-Тип: `number`
+Тип: `number`<br>
 Обязательно: `да`
 
 ### groupList([page])
@@ -179,7 +210,7 @@ sendSMS.groupList(2)
 #### Параметры
 
 #### page
-Тип: `string`
+Тип: `string`<br>
 Обязательно: `нет`
 
 ### addContact({ number, [groupId, birthday, sex, lname, fname, sname, param1, param2, param3] })
@@ -191,44 +222,44 @@ sendSMS.addContact({number: '79000000000'})
 ```
 
 #### number
-Тип: `string`
+Тип: `string`<br>
 Обязательно: `да`
 
 #### groupId
-Тип: `number`
+Тип: `number`<br>
 Обязательно: `нет`
 
 #### birthday
-Тип: `number`
-Обязательно: `нет`
+Тип: `number`<br>
+Обязательно: `нет`<br>
 Формат: `unixtime`
 
-### sex
-Тип: `string`
+#### sex
+Тип: `string`<br>
 Возможные значения: `male`, `female`
 
 #### lname
-Тип: `string`
+Тип: `string`<br>
 Обязательно: `нет`
 
 #### fname
-Тип: `string`
+Тип: `string`<br>
 Обязательно: `нет`
 
 #### sname
-Тип: `string`
+Тип: `string`<br>
 Обязательно: `нет`
 
 #### param1
-Тип: `string`
+Тип: `string`<br>
 Обязательно: `нет`
 
 #### param2
-Тип: `string`
+Тип: `string`<br>
 Обязательно: `нет`
 
 #### param3
-Тип: `string`
+Тип: `string`<br>
 Обязательно: `нет`
 
 ### deleteContact(id)
@@ -242,7 +273,7 @@ sendSMS.deleteContact(253603322)
 #### Параметры
 
 #### id
-Тип: `number`
+Тип: `number`<br>
 Обязательно: `да`
 
 ### contactList({ [number, groupId, birthday, sex, operator, lname, fname, sname] })
@@ -256,36 +287,36 @@ sendSMS.contactList({number: '79000000000', page: 1})
 #### Параметры
 
 #### number
-Тип: `string`
+Тип: `string`<br>
 Обязательно: `да`
 
 #### groupId
-Тип: `number`
+Тип: `number`<br>
 Обязательно: `нет`
 
 #### birthday
-Тип: `number`
-Обязательно: `нет`
+Тип: `number`<br>
+Обязательно: `нет`<br>
 Формат: `unixtime`
 
-### sex
-Тип: `string`
+#### sex
+Тип: `string`<br>
 Возможные значения: `male`, `female`
 
-### operator
-Тип: `string`
+#### operator
+Тип: `string`<br>
 Возможные значения: `MEGAFON`, `MTS`, `BEELINE`, `TELE2`, `OTHER`
 
 #### lname
-Тип: `string`
+Тип: `string`<br>
 Обязательно: `нет`
 
 #### fname
-Тип: `string`
+Тип: `string`<br>
 Обязательно: `нет`
 
 #### sname
-Тип: `string`
+Тип: `string`<br>
 Обязательно: `нет`
 
 ### addBlacklist(number)
@@ -303,11 +334,11 @@ sendSMS.addBlacklist({ numbers: ['79000000000', '79000000001'] })
 #### Параметры
 
 #### number
-Тип: `string`
+Тип: `string`<br>
 Обязательно: `да`
 
 #### numbers
-Тип: `array`
+Тип: `array`<br>
 Обязательно: `да`
 
 ### blacklistList([number, page])
@@ -321,12 +352,12 @@ sendSMS.blacklistList('79000000000')
 #### Параметры
 
 #### number
-Тип: `string`
+Тип: `string`<br>
 Обязательно: `нет`
 
 #### page
-Тип: `number`
-Обязательно: `нет`
+Тип: `number`<br>
+Обязательно: `нет`<br>
 По умолчанию: `1`
 
 ### hlrCheck(number)
@@ -342,11 +373,11 @@ sendSMS.hlrCheck({ numbers: ['79000000000', '79000000001'] })
 #### Параметры
 
 #### number
-Тип: `string`
+Тип: `string`<br>
 Обязательно: `да`
 
 #### numbers
-Тип: `array`
+Тип: `array`<br>
 Обязательно: `да`
 
 ### hlrStatus(id)
@@ -360,7 +391,7 @@ sendSMS.hlrCheck(610991)
 #### Параметры
 
 #### id
-Тип: `number`
+Тип: `number`<br>
 Обязательно: `да`
 
 ### checkOperator(number)
@@ -375,11 +406,11 @@ sendSMS.checkOperator({ numbers: ['79000000000', '79000000001'] })
 #### Параметры
 
 #### number
-Тип: `string`
+Тип: `string`<br>
 Обязательно: `да`
 
 #### numbers
-Тип: `array`
+Тип: `array`<br>
 Обязательно: `да`
 
 ### sendViber({ number, numbers, groupId, sign, channel, text, [imageSource, textButton, linkButton, dateSend, signSms, channelSms, textSms, priceSms] })
@@ -395,7 +426,7 @@ sendSMS.sendViber({ numbers: ['79000000000', '79000000001'] })
 #### Параметры
 
 #### number
-Тип: `string`
+Тип: `string`<br>
 Обязательно: `да`
 
 #### numbers
@@ -403,52 +434,52 @@ sendSMS.sendViber({ numbers: ['79000000000', '79000000001'] })
 Обязательно: `да`
 
 #### groupId
-Тип: `number`
+Тип: `number`<br>
 Обязательно: `да`
 
 #### sign
-Тип: `string`
+Тип: `string`<br>
 Обязательно: `да`
 
 #### channel
-Тип: `string`
+Тип: `string`<br>
 Обязательно: `да`
 
 #### text
-Тип: `string`
+Тип: `string`<br>
 Обязательно: `да`
 
 #### imageSource
-Тип: `string`
+Тип: `string`<br>
 Обязательно: `нет`
 
 #### textButton
-Тип: `string`
+Тип: `string`<br>
 Обязательно: `нет`
 
 #### linkButton
-Тип: `string`
+Тип: `string`<br>
 Обязательно: `нет`
 
 #### dateSend
-Тип: `number`
-Обязательно: `нет`
+Тип: `number`<br>
+Обязательно: `нет`<br>
 В формате: `unixtime`
 
 #### signSms
-Тип: `array`
+Тип: `array`<br>
 Обязательно: `нет`
 
 #### channelSms
-Тип: `string`
+Тип: `string`<br>
 Обязательно: `нет`
 
 #### textSms
-Тип: `string`
+Тип: `string`<br>
 Обязательно: `нет`
 
 #### priceSms
-Тип: `number`
+Тип: `number`<br>
 Обязательно: `нет`
 
 ### checkViberStat(id)
@@ -462,7 +493,7 @@ sendSMS.checkViberStat(693278)
 #### Параметры
 
 #### checkViberStat
-Тип: `number`
+Тип: `number`<br>
 Обязательно: `да`
 
 #### viberList()
@@ -481,3 +512,6 @@ sendSMS.viberList()
 sendSMS.viberSignList()
 ```
 
+## License
+
+MIT © [Alexander Sharabarov](https://alcovegan.github.io/)
