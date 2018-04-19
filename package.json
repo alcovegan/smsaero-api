@@ -6,7 +6,10 @@
   "scripts": {
     "test": ""
   },
-  "keywords": ["sms", "API"],
+  "keywords": [
+    "sms",
+    "API"
+  ],
   "author": "Alexander Sharabarov <alcovegan@gmail.com>",
   "repository": {
     "type": "git",
@@ -20,5 +23,6 @@
   "dependencies": {
     "axios": "^0.18.0",
     "query-string": "^6.0.0"
-  }
+  },
+  "devDependencies": {}
 }
