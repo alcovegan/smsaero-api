@@ -3,7 +3,6 @@ const axios = require("axios");
 const methodEndpoints = require("./methodEndpoints");
 
 class SmsAero {
-
 	constructor(username, apiKey, responseFormat = "json") {
 		this.responseFormat = responseFormat;
 		this.gateWayUrl = "gate.smsaero.ru/v2/";
@@ -73,8 +72,8 @@ class SmsAero {
 		return this.request(`${methodEndpoints.addSign}?name=${sign}`)
 	}
 
-	signList() {
-		return this.request(`${methodEndpoints.signList}`)
+	signList(page = 1) {
+		return this.request(`${methodEndpoints.signList}?page=${page}`)
 	}
 
 	addGroup(name) {
@@ -88,8 +87,8 @@ class SmsAero {
 		return this.request(`${methodEndpoints.deleteGroup}?id=${id}`)
 	}
 
-	groupList(page = undefined) {
-		return this.request(`${methodEndpoints.groupList}?page=${page !== undefined ? page : ''}`)
+	groupList(page = 1) {
+		return this.request(`${methodEndpoints.groupList}?page=${page}`)
 	}
 
 	addContact({
@@ -105,6 +104,7 @@ class SmsAero {
 		param3
 	} = {}) {
 		if(!number) throw new Error("You must provide at least number of contact!")
+		if(sex !== undefined && sex !== 'male' || sex !== undefined && sex !== 'female') throw new Error("Sex must be male or female!")
 
 		const query = qs.stringify({
 			number,
@@ -153,7 +153,7 @@ class SmsAero {
 			page
 		})
 
-		return this.request(`${methodEndpoints.contactList}?query=${query}`)
+		return this.request(`${methodEndpoints.contactList}?${query}`)
 	}
 
 	addBlacklist(number) {
@@ -175,8 +175,9 @@ class SmsAero {
 		return this.request(`${methodEndpoints.deleteBlacklist}?id=${id}`)
 	}
 
-	blacklistList() {
-		return this.request(`${methodEndpoints.blacklistList}`)
+	blacklistList({number, page = 1}) {
+		const query = qs.stringify({ number, page })
+		return this.request(`${methodEndpoints.blacklistList}?${query}`)
 	}
 
 	hlrCheck(number) {
@@ -227,6 +228,9 @@ class SmsAero {
 		priceSms
 	} = {}) {
 
+		if(number === undefined && numbers === undefined && groupId === undefined) throw new Error("You must provide number or numbers or groupId!");
+		if(!sign || !channel || !text) throw new Error("You must provide sign, channel and text!");
+
 		let query;
 
 		if(number) {
@@ -254,3 +258,5 @@ class SmsAero {
 		return this.request(`${methodEndpoints.viberSignList}`)
 	}
 }
+
+module.exports = SmsAero;
