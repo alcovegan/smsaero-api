@@ -1,6 +1,7 @@
 const qs = require("query-string");
 const axios = require("axios");
 const methodEndpoints = require("./methodEndpoints");
+const generateReqParamsForNumbers = require("./generateReqParamsForNumbers");
 
 class SmsAero {
 	constructor(username, apiKey, responseFormat = "json") {
@@ -157,14 +158,7 @@ class SmsAero {
 	}
 
 	addBlacklist(number) {
-		const query = typeof number === 'string'
-			? number
-			: qs.stringify(number, { arrayFormat: 'bracket' });
-
-		const requestParams = typeof number === 'string'
-			? `number=${number}`
-			: `${query}`
-
+		const requestParams = generateReqParamsForNumbers(number);
 		return this.request(`${methodEndpoints.addBlacklist}?${requestParams}`)
 	}
 
@@ -181,14 +175,7 @@ class SmsAero {
 	}
 
 	hlrCheck(number) {
-		const query = typeof number === 'string'
-			? number
-			: qs.stringify(number, { arrayFormat: 'bracket' });
-
-		const requestParams = typeof number === 'string'
-			? `number=${number}`
-			: `${query}`
-
+		const requestParams = generateReqParamsForNumbers(number);
 		return this.request(`${methodEndpoints.hlrCheck}?${requestParams}`)
 	}
 
@@ -200,14 +187,7 @@ class SmsAero {
 	}
 
 	checkOperator(number) {
-		const query = typeof number === 'string'
-			? number
-			: qs.stringify(number, { arrayFormat: 'bracket' });
-
-		const requestParams = typeof number === 'string'
-			? `number=${number}`
-			: `${query}`
-
+		const requestParams = generateReqParamsForNumbers(number);
 		return this.request(`${methodEndpoints.checkOperator}?${requestParams}`)
 	}
 
