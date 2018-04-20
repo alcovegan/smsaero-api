@@ -33,20 +33,28 @@
 
 ## Установка
 ```bash
-npm install --save smsaero-nodejs
+npm install --save smsaero-api
 ```
 or
 ```js
-yarn add smsaero-nodejs
+yarn add smsaero-api
 ```
 
 ## Использование
+
+Все методы возвращают promise, поэтому используйте .then/catch или async/await.
+
 ```js
-const smsAero = require('smsaero-nodejs');
+const smsAero = require('smsaero-api');
 // третьим параметром идет формат ответа, если не указать, то используется json
 const sendSMS = new smsAero("login", "apiKey", "json");
 
 sendSMS.send(...); // отправить sms
+  .then(response => {
+      const { data } = response;
+      console.log(data); // ответ API
+    })
+  .catch(err => console.log(err)); // ловим ошибки
 ```
 
 ## API

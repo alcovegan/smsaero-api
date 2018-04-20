@@ -13,12 +13,12 @@
   "author": "Alexander Sharabarov <alcovegan@gmail.com>",
   "repository": {
     "type": "git",
-    "url": "https://github.com/alcovegan/smsaero.git"
+    "url": "https://github.com/alcovegan/smsaero-api.git"
   },
   "bugs": {
-    "url": "https://github.com/alcovegan/smsaero/issues"
+    "url": "https://github.com/alcovegan/smsaero-api/issues"
   },
-  "homepage": "https://github.com/alcovegan/smsaero#readme",
+  "homepage": "https://github.com/alcovegan/smsaero-api#readme",
   "license": "MIT",
   "dependencies": {
     "axios": "^0.18.0",
