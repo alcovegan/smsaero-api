@@ -1,7 +1,7 @@
 const qs = require("query-string");
 const axios = require("axios");
 const methodEndpoints = require("./methodEndpoints");
-const generateReqParamsForNumbers = require("./generateReqParamsForNumbers");
+const generateReqParams = require("./generateReqParamsForNumbers");
 
 class SmsAero {
 	constructor(username, apiKey, responseFormat = "json") {
@@ -158,7 +158,7 @@ class SmsAero {
 	}
 
 	addBlacklist(number) {
-		const requestParams = generateReqParamsForNumbers(number);
+		const requestParams = generateReqParams(number);
 		return this.request(`${methodEndpoints.addBlacklist}?${requestParams}`)
 	}
 
@@ -175,7 +175,7 @@ class SmsAero {
 	}
 
 	hlrCheck(number) {
-		const requestParams = generateReqParamsForNumbers(number);
+		const requestParams = generateReqParams(number);
 		return this.request(`${methodEndpoints.hlrCheck}?${requestParams}`)
 	}
 
@@ -187,7 +187,7 @@ class SmsAero {
 	}
 
 	checkOperator(number) {
-		const requestParams = generateReqParamsForNumbers(number);
+		const requestParams = generateReqParams(number);
 		return this.request(`${methodEndpoints.checkOperator}?${requestParams}`)
 	}
 
