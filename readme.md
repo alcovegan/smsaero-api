@@ -33,11 +33,11 @@
 
 ## Установка
 ```bash
-npm install --save smsaero-api
+npm install --save smsaero-api-v2
 ```
 or
 ```js
-yarn add smsaero-api
+yarn add smsaero-api-v2
 ```
 
 ## Использование
@@ -45,7 +45,7 @@ yarn add smsaero-api
 Все методы возвращают promise, поэтому используйте .then/catch или async/await.
 
 ```js
-const smsAero = require('smsaero-api');
+const smsAero = require('smsaero-api-v2');
 // третьим параметром идет формат ответа, если не указать, то используется json
 const sendSMS = new smsAero("login", "apiKey", "json");
 
@@ -438,7 +438,7 @@ sendSMS.sendViber({ numbers: ['79000000000', '79000000001'] })
 Обязательно: `да`
 
 #### numbers
-Тип: `array`
+Тип: `array`<br>
 Обязательно: `да`
 
 #### groupId
@@ -520,6 +520,6 @@ sendSMS.viberList()
 sendSMS.viberSignList()
 ```
 
-## License
+## Лицензия
 
 MIT © [Alexander Sharabarov](https://alcovegan.github.io/)

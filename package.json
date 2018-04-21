@@ -1,5 +1,5 @@
 {
-  "name": "smsaero-api",
+  "name": "smsaero-api-v2",
   "version": "1.0.0",
   "description": "Node.JS library for working with smsaero.ru API",
   "main": "index.js",
